@@ -25,7 +25,7 @@ int main ()
 void GameProcess ()
     {
     Player washer  = {500, 300, 50, 50};
-    Player player1 = {50, 300, 0, 15, "1"};
+    Player player1 = {50, 300, 0, 15, "2"};
     Player player2 = {950, 300, 0, 15, "2"};
     int dt = 1;
 
@@ -41,7 +41,9 @@ void GameProcess ()
         txClear ();
 
         DrowWasher (washer);
+
         DrowPlayer (player1);
+
         DrowPlayer (player2);
 
 
@@ -173,5 +175,5 @@ void DrowPlayer (Player player)
     txSetFillColor (TX_BLUE);
     txSetColor (TX_WHITE);
     txCircle (player.x, player.y, 40);
-    txDrawText (player.x - 15, player.y - 15, player.x + 15, player.y + 15, player.text);
+    txDrawText (player.x - 15, player.y - 15, player.x + 15, player.y + 15, text);
     }
