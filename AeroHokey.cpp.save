@@ -8,7 +8,7 @@ struct Player
 
 void GameProcess ();
 void Physics (Player* player, int dt, int isPlayer);
-void Control (Player* player1, Player* player2);
+void Control (Player* player);
 void GameOver ();
 void Contact (Player* player, Player* washer);
 double sqr (double x);
@@ -25,7 +25,7 @@ int main ()
 void GameProcess ()
     {
     Player washer  = {500, 300, 50, 50};
-    Player player1 = {50, 300, 0, 15, "2"};
+    Player player1 = { 50, 300, 0, 15, "1"};
     Player player2 = {950, 300, 0, 15, "2"};
     int dt = 1;
 
@@ -41,9 +41,7 @@ void GameProcess ()
         txClear ();
 
         DrowWasher (washer);
-
         DrowPlayer (player1);
-
         DrowPlayer (player2);
 
 
@@ -64,7 +62,7 @@ void Physics (Player* player, int dt, int isPlayer)
     {
     double Friction = 0.9999;
 
-    (*player).x = (*player).x + (*player).vx*dt;
+    (*player).x = (*player.x) + (*player).vx*dt;
     player->y = player->y + player->vy*dt;
 
     player->vx = player->vx * Friction;
@@ -96,7 +94,7 @@ void Physics (Player* player, int dt, int isPlayer)
         }
     }
 
-void Control (Player* player1, Player* player2)
+void Control (Player* player, int Playe)
     {
     if ( GetAsyncKeyState (VK_RIGHT))
         {
@@ -116,26 +114,6 @@ void Control (Player* player1, Player* player2)
     if ( GetAsyncKeyState (VK_DOWN))
         {
         player1->vy = 5;
-        }
-
-    if ( GetAsyncKeyState ('D'))
-        {
-        player2->vx = 5;
-        }
-
-    if ( GetAsyncKeyState ('A'))
-        {
-        player2->vx = -5;
-        }
-
-    if ( GetAsyncKeyState ('W'))
-        {
-        player2->vy = -5;
-        }
-
-    if ( GetAsyncKeyState ('S'))
-        {
-        player2->vy = 5;
         }
     }
 
@@ -175,5 +153,5 @@ void DrowPlayer (Player player)
     txSetFillColor (TX_BLUE);
     txSetColor (TX_WHITE);
     txCircle (player.x, player.y, 40);
-    txDrawText (player.x - 15, player.y - 15, player.x + 15, player.y + 15, text);
+    txDrawText (player.x - 15, player.y - 15, player.x + 15, player.y + 15, player.text);
     }

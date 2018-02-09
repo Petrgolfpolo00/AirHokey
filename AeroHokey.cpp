@@ -8,7 +8,7 @@ struct Player
 
 void GameProcess ();
 void Physics (Player* player, int dt, int isPlayer);
-void Control (Player* player1, Player* player2);
+void Control (Player* player);
 void GameOver ();
 void Contact (Player* player, Player* washer);
 double sqr (double x);
@@ -25,8 +25,8 @@ int main ()
 void GameProcess ()
     {
     Player washer  = {500, 300, 50, 50};
-    Player player1 = {50, 300, 0, 15, "1"};
-    Player player2 = {950, 300, 0, 15, "2"};
+    Player player1 = { 50, 300,  0, 15, "1"};
+    Player player2 = {950, 300,  0, 15, "2"};
     int dt = 1;
 
     while ( ! GetAsyncKeyState (VK_RETURN))
@@ -49,7 +49,8 @@ void GameProcess ()
         Physics (&player1, dt, true);
         Physics (&player2, dt, true);
 
-        Control (&player1, &player2);
+        Control (&player1);
+        Control (&player2);
 
         Contact (&player1, &washer);
         Contact (&player2, &washer);
@@ -94,46 +95,26 @@ void Physics (Player* player, int dt, int isPlayer)
         }
     }
 
-void Control (Player* player1, Player* player2)
+void Control (Player* player)
     {
     if ( GetAsyncKeyState (VK_RIGHT))
         {
-        player1->vx = 5;
+        player->vx = 5;
         }
 
     if ( GetAsyncKeyState (VK_LEFT))
         {
-        player1->vx = -5;
+        player->vx = -5;
         }
 
     if ( GetAsyncKeyState (VK_UP))
         {
-        player1->vy = -5;
+        player->vy = -5;
         }
 
     if ( GetAsyncKeyState (VK_DOWN))
         {
-        player1->vy = 5;
-        }
-
-    if ( GetAsyncKeyState ('D'))
-        {
-        player2->vx = 5;
-        }
-
-    if ( GetAsyncKeyState ('A'))
-        {
-        player2->vx = -5;
-        }
-
-    if ( GetAsyncKeyState ('W'))
-        {
-        player2->vy = -5;
-        }
-
-    if ( GetAsyncKeyState ('S'))
-        {
-        player2->vy = 5;
+        player->vy = 5;
         }
     }
 
