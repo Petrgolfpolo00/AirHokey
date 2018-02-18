@@ -3,14 +3,15 @@
 struct Player
     {
     double x, y, vx, vy;
-    char* text;
+    int moveR, moveL, moveU, moveD;
+    int score;
     };
 
 void GameProcess ();
 void Physics (Player* player, int dt, int isPlayer);
 void Control (Player* player);
 void GameOver ();
-void Contact (Player* player, Player* washer);
+int Contact (double xAnyPlayer, double yAnyPlayer, double vxAnyPlayer, double vyAnyPlayer, double* xWasher, double* yWasher, double* vxWasher, double* vyWasher);
 double sqr (double x);
 void DrowWasher (Player washer);
 void DrowPlayer (Player player);
@@ -25,25 +26,26 @@ int main ()
 void GameProcess ()
     {
     Player washer  = {500, 300, 50, 50};
-    Player player1 = { 50, 300,  0, 15, "1"};
-    Player player2 = {950, 300,  0, 15, "2"};
+    Player player1 = {50, 300, 0, 15, 'D', 'A', 'W', 'S', 0};
+    Player player2 = {950, 300, 0, 15, VK_RIGHT, VK_LEFT, VK_UP, VK_DOWN, 0};
     int dt = 1;
 
     while ( ! GetAsyncKeyState (VK_RETURN))
         {
+        txSetFillColor (TX_YELLOW);
+        txClear ();
+
         txSetColor (TX_BLUE, 8);
         txLine (4, 280, 4, 320);
 
         txSetColor (TX_BLUE, 8);
         txLine (996, 280, 996, 320);
 
-        txSetFillColor (TX_YELLOW);
-        txClear ();
-
         DrowWasher (washer);
-        DrowPlayer (player1);
-        DrowPlayer (player2);
 
+        DrowPlayer (player1);
+
+        DrowPlayer (player2);
 
         Physics (&washer,  dt, false);
         Physics (&player1, dt, true);
@@ -52,8 +54,8 @@ void GameProcess ()
         Control (&player1);
         Control (&player2);
 
-        Contact (&player1, &washer);
-        Contact (&player2, &washer);
+        player1.score += Contact (player1.x, player1.y, player1.vx, player1.vy, &washer.x, &washer.y, &washer.vx, &washer.vy);
+        player2.score += Contact (player2.x, player2.y, player2.vx, player2.vy, &washer.x, &washer.y, &washer.vx, &washer.vy);
 
         txSleep (100);
         }
@@ -97,37 +99,39 @@ void Physics (Player* player, int dt, int isPlayer)
 
 void Control (Player* player)
     {
-    if ( GetAsyncKeyState (VK_RIGHT))
+    if ( GetAsyncKeyState (player->moveR))
         {
         player->vx = 5;
         }
 
-    if ( GetAsyncKeyState (VK_LEFT))
+    if ( GetAsyncKeyState (player->moveL))
         {
         player->vx = -5;
         }
 
-    if ( GetAsyncKeyState (VK_UP))
+    if ( GetAsyncKeyState (player->moveU))
         {
         player->vy = -5;
         }
 
-    if ( GetAsyncKeyState (VK_DOWN))
+    if ( GetAsyncKeyState (player->moveD))
         {
         player->vy = 5;
         }
     }
 
-void Contact (Player* player, Player* washer)
+int Contact (double xAnyPlayer, double yAnyPlayer, double vxAnyPlayer, double vyAnyPlayer, double* xWasher, double* yWasher, double* vxWasher, double* vyWasher)
     {
-    if (sqrt(sqr(player->x - washer->x) + sqr(player->y - washer->y)) < 30 + 40)
+    if (sqrt(sqr(xAnyPlayer - *xWasher) + sqr(yAnyPlayer - *yWasher)) < 30 + 40)
         {
-        washer->vx = player->vx;
-        washer->vy = player->vy;
+        *vxWasher = vxAnyPlayer;
+        *vyWasher = vyAnyPlayer;
 
-        washer->x = washer->x + washer->vx;
-        washer->y = washer->y + washer->vy;
+        *xWasher = *xWasher + *vxWasher;
+        *yWasher = *yWasher + *vyWasher;
+        return 1;
         }
+    return 0;
     }
 
 void GameOver ()
@@ -151,8 +155,13 @@ void DrowWasher (Player washer)
 
 void DrowPlayer (Player player)
     {
+    char scoreOut [4] = "";
+    itoa (player.score, scoreOut, 10);
+
     txSetFillColor (TX_BLUE);
     txSetColor (TX_WHITE);
     txCircle (player.x, player.y, 40);
-    txDrawText (player.x - 15, player.y - 15, player.x + 15, player.y + 15, player.text);
+
+    txSetTextAlign (TA_CENTER);
+    txTextOut (player.x, player.y - 7, scoreOut);
     }
