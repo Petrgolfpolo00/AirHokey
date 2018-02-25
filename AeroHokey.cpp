@@ -29,10 +29,13 @@ void GameProcess ()
     Player player1 = {50, 300, 0, 15, 'D', 'A', 'W', 'S', 0};
     Player player2 = {950, 300, 0, 15, VK_RIGHT, VK_LEFT, VK_UP, VK_DOWN, 0};
     int dt = 1;
+    char scoreOut1 [4] = "";
+    char scoreOut2 [4] = "";
 
     while ( ! GetAsyncKeyState (VK_RETURN))
         {
         txSetFillColor (TX_YELLOW);
+
         txClear ();
 
         txSetColor (TX_BLUE, 8);
@@ -40,12 +43,6 @@ void GameProcess ()
 
         txSetColor (TX_BLUE, 8);
         txLine (996, 280, 996, 320);
-
-        DrowWasher (washer);
-
-        DrowPlayer (player1);
-
-        DrowPlayer (player2);
 
         Physics (&washer,  dt, false);
         Physics (&player1, dt, true);
@@ -57,7 +54,23 @@ void GameProcess ()
         player1.score += Contact (player1.x, player1.y, player1.vx, player1.vy, &washer.x, &washer.y, &washer.vx, &washer.vy);
         player2.score += Contact (player2.x, player2.y, player2.vx, player2.vy, &washer.x, &washer.y, &washer.vx, &washer.vy);
 
-        txSleep (100);
+        txSetFillColor (TX_BLACK);
+        txSetColor (TX_LIGHTCYAN);
+        txRectangle (600, 0, 1000, 200);
+
+        itoa (player1.score, scoreOut1, 10);
+        itoa (player2.score, scoreOut2, 10);
+
+        txTextOut (730, 20, "Player1 = "); txTextOut (830, 20, scoreOut1);
+        txTextOut (730, 60, "Player2 = "); txTextOut (830, 60, scoreOut2);
+
+        DrowWasher (washer);
+
+        DrowPlayer (player1);
+
+        DrowPlayer (player2);
+
+        txSleep (150);
         }
     }
 

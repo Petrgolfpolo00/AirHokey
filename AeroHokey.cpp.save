@@ -29,10 +29,22 @@ void GameProcess ()
     Player player1 = {50, 300, 0, 15, 'D', 'A', 'W', 'S', 0};
     Player player2 = {950, 300, 0, 15, VK_RIGHT, VK_LEFT, VK_UP, VK_DOWN, 0};
     int dt = 1;
+    char scoreOut1 [4] = "";
+    char scoreOut2 [4] = "";
 
     while ( ! GetAsyncKeyState (VK_RETURN))
         {
         txSetFillColor (TX_YELLOW);
+        txSetFillColor (TX_BLACK);
+        txSetColor (TX_BLUE);
+        txRectangle (700, 0, 1000, 80);
+
+        itoa (player1.score, scoreOut1, 10);
+        itoa (player2.score, scoreOut2, 10);
+
+        txTextOut (730, 20, "Player1 = "); txTextOut (750, 20, scoreOut1);
+        txTextOut (730, 60, "Player2 = "); txTextOut (750, 60, 
+
         txClear ();
 
         txSetColor (TX_BLUE, 8);
@@ -57,7 +69,7 @@ void GameProcess ()
         player1.score += Contact (player1.x, player1.y, player1.vx, player1.vy, &washer.x, &washer.y, &washer.vx, &washer.vy);
         player2.score += Contact (player2.x, player2.y, player2.vx, player2.vy, &washer.x, &washer.y, &washer.vx, &washer.vy);
 
-        txSleep (100);
+        txSleep (150);
         }
     }
 
@@ -161,7 +173,7 @@ void DrowPlayer (Player player)
     txSetFillColor (TX_BLUE);
     txSetColor (TX_WHITE);
     txCircle (player.x, player.y, 40);
-    
-    txSetTextAlign (TA_CENTR
-    txTextOut (player.x, player.y, scoreOut);
+
+    txSetTextAlign (TA_CENTER);
+    txTextOut (player.x, player.y - 7, scoreOut);
     }
