@@ -8,7 +8,7 @@ double Useless (double* x, double* y);
 double UselessCover (const double* x, const double* y);
 int main ()
     {
-    double x, y;
+    double x, y;                                                               //преднамеренная ошибка - специально не присваеваем значения
     printf ("до присвоения перменной значения: %lf, %lf \n", x, y);
     Transport (&x, &y);
     printf ("после присвоения перемонной значения: %lf, %lf \n", x, y);

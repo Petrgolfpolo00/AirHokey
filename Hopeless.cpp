@@ -1,4 +1,4 @@
-    #include "Txlib.h"
+     #include "Txlib.h"
 
 const int SnakeSz = 100;
 const int Zoom = 5;
@@ -18,12 +18,14 @@ struct Charecter
     void charecterDraw ();
     void physics (int dt);
     void control ();
-    void maybeEatFruite (int xFr, int yFr);
+    int maybeEatFruite (int xFr, int yFr);
+    int matchCheck (int x, int y);
     };
 
 void MainCycle ();
 void DrawFruite (int x, int y);
-void numberXchange (int x, int y);
+void numberXchange (int *x, int *y, Charecter *Snake);
+
 
 int main ()
     {
@@ -39,7 +41,7 @@ void MainCycle ()
     int xFr = 0;
     int yFr = 0;
 
-    numberXchange (&xFr, &yFr);
+    numberXchange (&xFr, &yFr, &snake);
 
     while ( ! GetAsyncKeyState (VK_RETURN))
         {
@@ -51,7 +53,11 @@ void MainCycle ()
         snake.control ();
         snake.physics (dt);
         snake.charecterDraw ();
-        snake.maybeEatFruite (xFr, yFr);
+
+        if (snake.maybeEatFruite (xFr, yFr) == 1)
+            {
+            numberXchange (&xFr, &yFr, &snake);
+            }
 
         txSleep (100);
         }
@@ -133,7 +139,9 @@ void Charecter:: control ()
 void Charecter:: charecterDraw ()
     {
     txSetFillColor (TX_BLUE);
-    for (int i = 0; i < length_; i++) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+    for (int i = 1; i < length_; i++) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+    txSetFillColor (RGB(0, 150, 220));
+    txRectangle (x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, x_[0] + 5 * 0.5 * Zoom, y_[0] + 5 * 0.5 * Zoom);
     }
 
 void DrawFruite (int x, int y)
@@ -142,22 +150,39 @@ void DrawFruite (int x, int y)
     txCircle (x, y, 6 * 0.5 * Zoom);
     }
 
-void Charecter:: maybeEatFruite (int xFr, int yFr)
+int Charecter:: maybeEatFruite (int xFr, int yFr)
     {
     if ((x_[0] == xFr) && (y_[0] == yFr))
         {
         length_ = length_ + 1;
-        /*xFr = rand() % 100 * Zoom;
-        yFr = rand() % 50  * Zoom;*/
+        return 1;
         }
+    return 0;
     }
 
-void numberXchange (int *x, int *y, Charecetr *Snake)
+void numberXchange (int *x, int *y, Charecter *snake)
     {
-    while (*x != x_[i] && *x%5 == 0 && *y != y_[i] && *y%5 == 0)
+    printf ("Начинается функция создания новых координат, \n");
+
+    do
         {
-        *x = rand() % 100 * Zoom;
-        *y = rand() % 100 * Zoom;
+        *x = (rand() % 14 + 5) * Zoom * 5;                    // Берем координаты нарисованного фрук
+        *y = (rand() % 14 + 5) * Zoom * 5;                    // Генирируем новые (рандомные кратные пяти) координаты фрукта
+        }                                               // Сравниваем с координатами змейки
+    while (snake->matchCheck (*x, *y) != 0);            // Если совпало, генирируем новые координаты
+
+    printf ("Новые значения x и y: %i, %i, \n", *x, *y);
+    }
+
+int Charecter:: matchCheck (int x,int y)
+    {
+    for (int i = 0; i <= length_ - 1; i++)
+        {
+        if ((x_[i] == x) && (y_[i] == y))
+            {
+            return 1;
+            }
+        return 0;
         }
     }
 

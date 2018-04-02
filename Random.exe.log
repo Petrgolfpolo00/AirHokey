@@ -1,0 +1,80 @@
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: E:\AirHokey\Random.exe,
+
+ВНЕЗАПНО: Деление на ноль при операции с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_DIVIDE_BY_ZERO (0xC000008E) при выполнении кода по адресу 0x00426BE5 в функции main() в файле E:/AirHokey/Random.cpp на строке 7. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005002C0 (32-bit), Flags: Cmdre0, Thread: 0x784 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00426BF7 in E:\AirHokey\Random.exe: main() at E:/AirHokey/Random.cpp (7):
+
+      5:     for (int i = 1;  i <= 20; i++)
+      6:         {
+=>    7:         int x = (rand() % 100) * 5 / 0.0;
+      8:         int y = (rand() % 50) * 5;                                     //x = 1, 2, 4, 5, 499
+      9:         printf ("Рандомные x и y: %i, %i \n", x, y);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files\TX\TXLib.h
+Compiled:	Mar 30 2018 20:53:36, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 30 2018 20:53:40
+
+Run file:	E:\AirHokey\Random.exe
+Directory:	E:\AirHokey
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: E:\AirHokey\Random.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Деление на ноль при операции с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_DIVIDE_BY_ZERO (0xC000008E) при выполнении кода по адресу 0x00426BE5 в функции main() в файле E:/AirHokey/Random.cpp на строке 7. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005002C0 (32-bit), Flags: Cmdre0, Thread: 0x784 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00426BF7 in E:\AirHokey\Random.exe: main() at E:/AirHokey/Random.cpp (7):
+
+      5:     for (int i = 1;  i <= 20; i++)
+      6:         {
+=>    7:         int x = (rand() % 100) * 5 / 0.0;
+      8:         int y = (rand() % 50) * 5;                                     //x = 1, 2, 4, 5, 499
+      9:         printf ("Рандомные x и y: %i, %i \n", x, y);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files\TX\TXLib.h
+Compiled:	Mar 30 2018 20:53:36, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 30 2018 20:53:40
+
+Run file:	E:\AirHokey\Random.exe
+Directory:	E:\AirHokey
+
+--------------------------------------------------

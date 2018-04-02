@@ -1,0 +1,388 @@
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: E:\AirHokey\Hopeless.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x0041AEF0 в функции txRectangle() в файле C:/Program Files/TX/TXLib.h на строке 10728. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005012C0 (32-bit), Flags: CMdRe0, Thread: 0x4EC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041AEF3 in E:\AirHokey\Hopeless.exe: txRectangle() at C:/Program Files/TX/TXLib.h (10728)
+
+# 1 0x004270C7 in E:\AirHokey\Hopeless.exe: charecterDraw() at E:/AirHokey/Hopeless.cpp (142):
+
+    140:     {
+    141:     txSetFillColor (TX_BLUE);
+=>  142:     for (int i = 1; i < length_; i--) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+    143:     txSetFillColor (RGB(0, 150, 220));
+    144:     txRectangle (x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, x_[0] + 5 * 0.5 * Zoom, y_[0] + 5 * 0.5 * Zoom);
+
+# 2 0x00426CFA in E:\AirHokey\Hopeless.exe: MainCycle() at E:/AirHokey/Hopeless.cpp (55):
+
+     53:         snake.control ();
+     54:         snake.physics (dt);
+=>   55:         snake.charecterDraw ();
+     56: 
+     57:         if (snake.maybeEatFruite (xFr, yFr) == 1)
+
+# 3 0x00426BE5 in E:\AirHokey\Hopeless.exe: main() at E:/AirHokey/Hopeless.cpp (34):
+
+     32:     txCreateWindow (200 * Zoom, 100 * Zoom);
+     33: 
+=>   34:     MainCycle ();
+     35:     }
+     36: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txRectangle(double, double, double, double, HDC) at C:\Program Files\TX\TXLib.h (10728):
+
+  10726: $1  if (_TX_DEFAULT_HDC_FAILED (dc)) return false;
+  10727: 
+=>10728: $   txGDI ((Win32::Rectangle (dc, ROUND (x0), ROUND (y0), ROUND (x1), ROUND (y1))), dc) asserted;
+  10729: 
+  10730: $   return true;
+
+# 1 in void Charecter::charecterDraw() at E:\AirHokey\Hopeless.cpp (142):
+
+    140:     {
+    141:     txSetFillColor (TX_BLUE);
+=>  142:     for (int i = 1; i < length_; i--) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+    143:     txSetFillColor (RGB(0, 150, 220));
+    144:     txRectangle (x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, x_[0] + 5 * 0.5 * Zoom, y_[0] + 5 * 0.5 * Zoom);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files\TX\TXLib.h
+Compiled:	Apr  1 2018 13:02:37, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 01 2018 13:02:42
+
+Run file:	E:\AirHokey\Hopeless.exe
+Directory:	E:\AirHokey
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: E:\AirHokey\Hopeless.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x0041AEF0 в функции txRectangle() в файле C:/Program Files/TX/TXLib.h на строке 10728. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005012C0 (32-bit), Flags: CMdRe0, Thread: 0x4EC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041AEF3 in E:\AirHokey\Hopeless.exe: txRectangle() at C:/Program Files/TX/TXLib.h (10728)
+
+# 1 0x004270C7 in E:\AirHokey\Hopeless.exe: charecterDraw() at E:/AirHokey/Hopeless.cpp (142):
+
+    140:     {
+    141:     txSetFillColor (TX_BLUE);
+=>  142:     for (int i = 1; i < length_; i--) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+    143:     txSetFillColor (RGB(0, 150, 220));
+    144:     txRectangle (x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, x_[0] + 5 * 0.5 * Zoom, y_[0] + 5 * 0.5 * Zoom);
+
+# 2 0x00426CFA in E:\AirHokey\Hopeless.exe: MainCycle() at E:/AirHokey/Hopeless.cpp (55):
+
+     53:         snake.control ();
+     54:         snake.physics (dt);
+=>   55:         snake.charecterDraw ();
+     56: 
+     57:         if (snake.maybeEatFruite (xFr, yFr) == 1)
+
+# 3 0x00426BE5 in E:\AirHokey\Hopeless.exe: main() at E:/AirHokey/Hopeless.cpp (34):
+
+     32:     txCreateWindow (200 * Zoom, 100 * Zoom);
+     33: 
+=>   34:     MainCycle ();
+     35:     }
+     36: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txRectangle(double, double, double, double, HDC) at C:\Program Files\TX\TXLib.h (10728):
+
+  10726: $1  if (_TX_DEFAULT_HDC_FAILED (dc)) return false;
+  10727: 
+=>10728: $   txGDI ((Win32::Rectangle (dc, ROUND (x0), ROUND (y0), ROUND (x1), ROUND (y1))), dc) asserted;
+  10729: 
+  10730: $   return true;
+
+# 1 in void Charecter::charecterDraw() at E:\AirHokey\Hopeless.cpp (142):
+
+    140:     {
+    141:     txSetFillColor (TX_BLUE);
+=>  142:     for (int i = 1; i < length_; i--) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+    143:     txSetFillColor (RGB(0, 150, 220));
+    144:     txRectangle (x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, x_[0] + 5 * 0.5 * Zoom, y_[0] + 5 * 0.5 * Zoom);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files\TX\TXLib.h
+Compiled:	Apr  1 2018 13:02:37, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 01 2018 13:02:42
+
+Run file:	E:\AirHokey\Hopeless.exe
+Directory:	E:\AirHokey
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: E:\AirHokey\Hopeless.exe, файл: C:\Program Files\TX\TXLib.h, строка: 7835, функция: bool {anonymous}::TX::_txCanvas_OnDESTROY(HWND),
+
+Сообщение: Cannot lock GDI to free resources
+
+#3: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005012C0 (32-bit), Flags: CMdrE0, Thread: 0xD10 (Canvas), errno: 34 (Result too large). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041AEF3 in E:\AirHokey\Hopeless.exe: txRectangle() at C:/Program Files/TX/TXLib.h (10728)
+
+# 1 0x004270C7 in E:\AirHokey\Hopeless.exe: charecterDraw() at E:/AirHokey/Hopeless.cpp (142):
+
+    140:     {
+    141:     txSetFillColor (TX_BLUE);
+=>  142:     for (int i = 1; i < length_; i--) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+    143:     txSetFillColor (RGB(0, 150, 220));
+    144:     txRectangle (x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, x_[0] + 5 * 0.5 * Zoom, y_[0] + 5 * 0.5 * Zoom);
+
+# 2 0x00426CFA in E:\AirHokey\Hopeless.exe: MainCycle() at E:/AirHokey/Hopeless.cpp (55):
+
+     53:         snake.control ();
+     54:         snake.physics (dt);
+=>   55:         snake.charecterDraw ();
+     56: 
+     57:         if (snake.maybeEatFruite (xFr, yFr) == 1)
+
+# 3 0x00426BE5 in E:\AirHokey\Hopeless.exe: main() at E:/AirHokey/Hopeless.cpp (34):
+
+     32:     txCreateWindow (200 * Zoom, 100 * Zoom);
+     33: 
+=>   34:     MainCycle ();
+     35:     }
+     36: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txCanvas_OnDESTROY(HWND) at C:\Program Files\TX\TXLib.h (7835):
+
+   7833: $   bool locked = false;
+   7834: $   _txWaitFor ((locked = txLock (false), locked), _TX_TIMEOUT);
+=> 7835: $   if (!locked) TX_DEBUG_ERROR ("Cannot lock GDI to free resources");
+   7836: 
+   7837:     // Освобождаем пользовательские ресурсы
+
+# 1 in LRESULT {anonymous}::TX::_txCanvas_WndProc(HWND, UINT, WPARAM, LPARAM) at C:\Program Files\TX\TXLib.h (7767):
+
+   7765: 
+   7766:         case WM_CLOSE:        $ if (_txCanvas_OnCLOSE      (wnd)) break; else return 0;
+=> 7767:         case WM_DESTROY:      $     _txCanvas_OnDESTROY    (wnd);             return 0;
+   7768: 
+   7769:         case WM_PAINT:        $     _txCanvas_OnPAINT      (wnd);             return 0;
+
+# 2 in LRESULT {anonymous}::TX::_txCanvas_WndProc(HWND, UINT, WPARAM, LPARAM) at C:\Program Files\TX\TXLib.h (7794):
+
+   7792:         }
+   7793: 
+=> 7794: $   return DefWindowProc (wnd, msg, wpar, lpar);
+   7795:     }
+   7796: 
+
+# 3 in LRESULT {anonymous}::TX::_txCanvas_WndProc(HWND, UINT, WPARAM, LPARAM) at C:\Program Files\TX\TXLib.h (7794):
+
+   7792:         }
+   7793: 
+=> 7794: $   return DefWindowProc (wnd, msg, wpar, lpar);
+   7795:     }
+   7796: 
+
+# 4 in LRESULT {anonymous}::TX::_txCanvas_WndProc(HWND, UINT, WPARAM, LPARAM) at C:\Program Files\TX\TXLib.h (7794):
+
+   7792:         }
+   7793: 
+=> 7794: $   return DefWindowProc (wnd, msg, wpar, lpar);
+   7795:     }
+   7796: 
+
+# 5 in unsigned int {anonymous}::TX::_txCanvas_ThreadProc(void*) at C:\Program Files\TX\TXLib.h (7571):
+
+   7569: 
+   7570: $       TranslateMessage (&msg);
+=> 7571: $       DispatchMessage  (&msg);
+   7572: 
+   7573: $       Sleep (0);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files\TX\TXLib.h
+Compiled:	Apr  1 2018 13:02:37, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 01 2018 13:02:42
+
+Run file:	E:\AirHokey\Hopeless.exe
+Directory:	E:\AirHokey
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: E:\AirHokey\Hopeless.exe, файл: C:\Program Files\TX\TXLib.h, строка: 7835, функция: bool {anonymous}::TX::_txCanvas_OnDESTROY(HWND),
+
+Сообщение: Cannot lock GDI to free resources
+
+#4: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005012C0 (32-bit), Flags: CMdrE0, Thread: 0xD10 (Canvas), errno: 34 (Result too large). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041AEF3 in E:\AirHokey\Hopeless.exe: txRectangle() at C:/Program Files/TX/TXLib.h (10728)
+
+# 1 0x004270C7 in E:\AirHokey\Hopeless.exe: charecterDraw() at E:/AirHokey/Hopeless.cpp (142):
+
+    140:     {
+    141:     txSetFillColor (TX_BLUE);
+=>  142:     for (int i = 1; i < length_; i--) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+    143:     txSetFillColor (RGB(0, 150, 220));
+    144:     txRectangle (x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, x_[0] + 5 * 0.5 * Zoom, y_[0] + 5 * 0.5 * Zoom);
+
+# 2 0x00426CFA in E:\AirHokey\Hopeless.exe: MainCycle() at E:/AirHokey/Hopeless.cpp (55):
+
+     53:         snake.control ();
+     54:         snake.physics (dt);
+=>   55:         snake.charecterDraw ();
+     56: 
+     57:         if (snake.maybeEatFruite (xFr, yFr) == 1)
+
+# 3 0x00426BE5 in E:\AirHokey\Hopeless.exe: main() at E:/AirHokey/Hopeless.cpp (34):
+
+     32:     txCreateWindow (200 * Zoom, 100 * Zoom);
+     33: 
+=>   34:     MainCycle ();
+     35:     }
+     36: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txCanvas_OnDESTROY(HWND) at C:\Program Files\TX\TXLib.h (7835):
+
+   7833: $   bool locked = false;
+   7834: $   _txWaitFor ((locked = txLock (false), locked), _TX_TIMEOUT);
+=> 7835: $   if (!locked) TX_DEBUG_ERROR ("Cannot lock GDI to free resources");
+   7836: 
+   7837:     // Освобождаем пользовательские ресурсы
+
+# 1 in LRESULT {anonymous}::TX::_txCanvas_WndProc(HWND, UINT, WPARAM, LPARAM) at C:\Program Files\TX\TXLib.h (7767):
+
+   7765: 
+   7766:         case WM_CLOSE:        $ if (_txCanvas_OnCLOSE      (wnd)) break; else return 0;
+=> 7767:         case WM_DESTROY:      $     _txCanvas_OnDESTROY    (wnd);             return 0;
+   7768: 
+   7769:         case WM_PAINT:        $     _txCanvas_OnPAINT      (wnd);             return 0;
+
+# 2 in int {anonymous}::TX::txMessageBox(const char*, const char*, unsigned int) at C:\Program Files\TX\TXLib.h (10187):
+
+  10185: int txMessageBox (const char text[], const char header[], unsigned flags /*= 0*/)
+  10186:     {
+=>10187: $1  static wchar_t textW   [_TX_BIGBUFSIZE * sizeof (wchar_t)] = L"[NULL text]";
+  10188:     static wchar_t headerW [_TX_BUFSIZE    * sizeof (wchar_t)] = L"[NULL header]";
+  10189: 
+
+# 3 in bool {anonymous}::TX::_txCanvas_OnDESTROY(HWND) at C:\Program Files\TX\TXLib.h (7835):
+
+   7833: $   bool locked = false;
+   7834: $   _txWaitFor ((locked = txLock (false), locked), _TX_TIMEOUT);
+=> 7835: $   if (!locked) TX_DEBUG_ERROR ("Cannot lock GDI to free resources");
+   7836: 
+   7837:     // Освобождаем пользовательские ресурсы
+
+# 4 in LRESULT {anonymous}::TX::_txCanvas_WndProc(HWND, UINT, WPARAM, LPARAM) at C:\Program Files\TX\TXLib.h (7767):
+
+   7765: 
+   7766:         case WM_CLOSE:        $ if (_txCanvas_OnCLOSE      (wnd)) break; else return 0;
+=> 7767:         case WM_DESTROY:      $     _txCanvas_OnDESTROY    (wnd);             return 0;
+   7768: 
+   7769:         case WM_PAINT:        $     _txCanvas_OnPAINT      (wnd);             return 0;
+
+# 5 in LRESULT {anonymous}::TX::_txCanvas_WndProc(HWND, UINT, WPARAM, LPARAM) at C:\Program Files\TX\TXLib.h (7794):
+
+   7792:         }
+   7793: 
+=> 7794: $   return DefWindowProc (wnd, msg, wpar, lpar);
+   7795:     }
+   7796: 
+
+# 6 in LRESULT {anonymous}::TX::_txCanvas_WndProc(HWND, UINT, WPARAM, LPARAM) at C:\Program Files\TX\TXLib.h (7794):
+
+   7792:         }
+   7793: 
+=> 7794: $   return DefWindowProc (wnd, msg, wpar, lpar);
+   7795:     }
+   7796: 
+
+# 7 in LRESULT {anonymous}::TX::_txCanvas_WndProc(HWND, UINT, WPARAM, LPARAM) at C:\Program Files\TX\TXLib.h (7794):
+
+   7792:         }
+   7793: 
+=> 7794: $   return DefWindowProc (wnd, msg, wpar, lpar);
+   7795:     }
+   7796: 
+
+# 8 in unsigned int {anonymous}::TX::_txCanvas_ThreadProc(void*) at C:\Program Files\TX\TXLib.h (7571):
+
+   7569: 
+   7570: $       TranslateMessage (&msg);
+=> 7571: $       DispatchMessage  (&msg);
+   7572: 
+   7573: $       Sleep (0);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files\TX\TXLib.h
+Compiled:	Apr  1 2018 13:02:37, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 01 2018 13:02:41
+
+Run file:	E:\AirHokey\Hopeless.exe
+Directory:	E:\AirHokey
+
+--------------------------------------------------
