@@ -386,3 +386,368 @@ Run file:	E:\AirHokey\Hopeless.exe
 Directory:	E:\AirHokey
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: E:\AirHokey\Hopeless.exe, файл: C:\Program Files\TX\TXLib.h, строка: 11084, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005012C0 (32-bit), Flags: CMdRe0, Thread: 0x4E8 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041F908 in E:\AirHokey\Hopeless.exe: txBitBlt() at C:/Program Files/TX/TXLib.h (11084)
+
+# 1 0x004271E9 in E:\AirHokey\Hopeless.exe: charecterDraw() at E:/AirHokey/Hopeless.cpp (152):
+
+    150:     txSetFillColor (TX_BLUE);
+    151:     for (int i = 1; i < length_; i++) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+=>  152:     txBitBlt (txDC(), x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, 0, 0, photo_);
+    153:     txDeleteDC (photo_);
+    154:     }
+
+# 2 0x00426D36 in E:\AirHokey\Hopeless.exe: MainCycle() at E:/AirHokey/Hopeless.cpp (58):
+
+     56:         snake.control ();
+     57:         snake.physics (dt);
+=>   58:         snake.charecterDraw ();
+     59:         if (snake.gameOver () == 1)
+     60:             {
+
+# 3 0x00426BE5 in E:\AirHokey\Hopeless.exe: main() at E:/AirHokey/Hopeless.cpp (37):
+
+     35:     txCreateWindow (200 * Zoom, 100 * Zoom);
+     36: 
+=>   37:     MainCycle ();
+     38:     }
+     39: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Program Files\TX\TXLib.h (11084):
+
+  11082:     {
+  11083: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>11084: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  11085: 
+  11086: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in void Charecter::charecterDraw() at E:\AirHokey\Hopeless.cpp (152):
+
+    150:     txSetFillColor (TX_BLUE);
+    151:     for (int i = 1; i < length_; i++) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+=>  152:     txBitBlt (txDC(), x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, 0, 0, photo_);
+    153:     txDeleteDC (photo_);
+    154:     }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files\TX\TXLib.h
+Compiled:	Apr 22 2018 10:06:51, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 22 2018 10:06:54
+
+Run file:	E:\AirHokey\Hopeless.exe
+Directory:	E:\AirHokey
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: E:\AirHokey\Hopeless.exe, файл: C:\Program Files\TX\TXLib.h, строка: 11084, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005012C0 (32-bit), Flags: CMdRe0, Thread: 0xEC8 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041F908 in E:\AirHokey\Hopeless.exe: txBitBlt() at C:/Program Files/TX/TXLib.h (11084)
+
+# 1 0x004271E1 in E:\AirHokey\Hopeless.exe: charecterDraw() at E:/AirHokey/Hopeless.cpp (152):
+
+    150:     txSetFillColor (TX_BLUE);
+    151:     for (int i = 1; i < length_; i++) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+=>  152:     txBitBlt (txDC(), x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, 0, 0, photo_);
+    153:     txDeleteDC (photo_);
+    154:     }
+
+# 2 0x00426CFA in E:\AirHokey\Hopeless.exe: MainCycle() at E:/AirHokey/Hopeless.cpp (58):
+
+     56:         snake.control ();
+     57:         snake.physics (dt);
+=>   58:         snake.charecterDraw ();
+     59:         if (snake.gameOver () == 1)
+     60:             {
+
+# 3 0x00426BE5 in E:\AirHokey\Hopeless.exe: main() at E:/AirHokey/Hopeless.cpp (37):
+
+     35:     txCreateWindow (200 * Zoom, 100 * Zoom);
+     36: 
+=>   37:     MainCycle ();
+     38:     }
+     39: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Program Files\TX\TXLib.h (11084):
+
+  11082:     {
+  11083: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>11084: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  11085: 
+  11086: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in void Charecter::charecterDraw() at E:\AirHokey\Hopeless.cpp (152):
+
+    150:     txSetFillColor (TX_BLUE);
+    151:     for (int i = 1; i < length_; i++) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+=>  152:     txBitBlt (txDC(), x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, 0, 0, photo_);
+    153:     txDeleteDC (photo_);
+    154:     }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files\TX\TXLib.h
+Compiled:	Apr 22 2018 10:16:28, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 22 2018 10:16:31
+
+Run file:	E:\AirHokey\Hopeless.exe
+Directory:	E:\AirHokey
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: E:\AirHokey\Hopeless.exe, файл: C:\Program Files\TX\TXLib.h, строка: 11084, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005012C0 (32-bit), Flags: CMdRe0, Thread: 0x918 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041F908 in E:\AirHokey\Hopeless.exe: txBitBlt() at C:/Program Files/TX/TXLib.h (11084)
+
+# 1 0x004271E1 in E:\AirHokey\Hopeless.exe: charecterDraw() at E:/AirHokey/Hopeless.cpp (152):
+
+    150:     txSetFillColor (TX_BLUE);
+    151:     for (int i = 1; i < length_; i++) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+=>  152:     txBitBlt (txDC(), x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, 0, 0, photo_);
+    153:     txDeleteDC (photo_);
+    154:     }
+
+# 2 0x00426CFA in E:\AirHokey\Hopeless.exe: MainCycle() at E:/AirHokey/Hopeless.cpp (58):
+
+     56:         snake.control ();
+     57:         snake.physics (dt);
+=>   58:         snake.charecterDraw ();
+     59:         if (snake.gameOver () == 1)
+     60:             {
+
+# 3 0x00426BE5 in E:\AirHokey\Hopeless.exe: main() at E:/AirHokey/Hopeless.cpp (37):
+
+     35:     txCreateWindow (200 * Zoom, 100 * Zoom);
+     36: 
+=>   37:     MainCycle ();
+     38:     }
+     39: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Program Files\TX\TXLib.h (11084):
+
+  11082:     {
+  11083: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>11084: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  11085: 
+  11086: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in void Charecter::charecterDraw() at E:\AirHokey\Hopeless.cpp (152):
+
+    150:     txSetFillColor (TX_BLUE);
+    151:     for (int i = 1; i < length_; i++) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+=>  152:     txBitBlt (txDC(), x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, 0, 0, photo_);
+    153:     txDeleteDC (photo_);
+    154:     }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files\TX\TXLib.h
+Compiled:	Apr 22 2018 11:57:09, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 22 2018 11:57:11
+
+Run file:	E:\AirHokey\Hopeless.exe
+Directory:	E:\AirHokey
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: E:\AirHokey\Hopeless.exe, файл: C:\Program Files\TX\TXLib.h, строка: 11084, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005012C0 (32-bit), Flags: CMdRe0, Thread: 0x264 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041F908 in E:\AirHokey\Hopeless.exe: txBitBlt() at C:/Program Files/TX/TXLib.h (11084)
+
+# 1 0x004271E1 in E:\AirHokey\Hopeless.exe: charecterDraw() at E:/AirHokey/Hopeless.cpp (152):
+
+    150:     txSetFillColor (TX_BLUE);
+    151:     for (int i = 1; i < length_; i++) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+=>  152:     txBitBlt (txDC(), x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, 0, 0, photo_);
+    153:     txDeleteDC (photo_);
+    154:     }
+
+# 2 0x00426CFA in E:\AirHokey\Hopeless.exe: MainCycle() at E:/AirHokey/Hopeless.cpp (58):
+
+     56:         snake.control ();
+     57:         snake.physics (dt);
+=>   58:         snake.charecterDraw ();
+     59:         if (snake.gameOver () == 1)
+     60:             {
+
+# 3 0x00426BE5 in E:\AirHokey\Hopeless.exe: main() at E:/AirHokey/Hopeless.cpp (37):
+
+     35:     txCreateWindow (200 * Zoom, 100 * Zoom);
+     36: 
+=>   37:     MainCycle ();
+     38:     }
+     39: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Program Files\TX\TXLib.h (11084):
+
+  11082:     {
+  11083: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>11084: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  11085: 
+  11086: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in void Charecter::charecterDraw() at E:\AirHokey\Hopeless.cpp (152):
+
+    150:     txSetFillColor (TX_BLUE);
+    151:     for (int i = 1; i < length_; i++) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+=>  152:     txBitBlt (txDC(), x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, 0, 0, photo_);
+    153:     txDeleteDC (photo_);
+    154:     }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files\TX\TXLib.h
+Compiled:	Apr 22 2018 12:03:47, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 22 2018 12:03:50
+
+Run file:	E:\AirHokey\Hopeless.exe
+Directory:	E:\AirHokey
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: E:\AirHokey\Hopeless.exe, файл: C:\Program Files\TX\TXLib.h, строка: 11084, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005012C0 (32-bit), Flags: CMdRe0, Thread: 0x928 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041F908 in E:\AirHokey\Hopeless.exe: txBitBlt() at C:/Program Files/TX/TXLib.h (11084)
+
+# 1 0x00427211 in E:\AirHokey\Hopeless.exe: charecterDraw() at E:/AirHokey/Hopeless.cpp (162):
+
+    160:     txSetFillColor (TX_BLUE);
+    161:     for (int i = 1; i < length_; i++) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+=>  162:     txBitBlt (txDC(), x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, 0, 0, photo_);
+    163:     txDeleteDC (photo_);
+    164:     }
+
+# 2 0x00426D28 in E:\AirHokey\Hopeless.exe: MainCycle() at E:/AirHokey/Hopeless.cpp (68):
+
+     66:         snake.control ();
+     67:         snake.physics (dt);
+=>   68:         snake.charecterDraw ();
+     69:         if (snake.gameOver () == 1)
+     70:             {
+
+# 3 0x00426BEF in E:\AirHokey\Hopeless.exe: main() at E:/AirHokey/Hopeless.cpp (39):
+
+     37:     txCreateWindow (200 * Zoom, 100 * Zoom);
+     38: 
+=>   39:     MainCycle ();
+     40:     }
+     41: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Program Files\TX\TXLib.h (11084):
+
+  11082:     {
+  11083: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>11084: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  11085: 
+  11086: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in void Charecter::charecterDraw() at E:\AirHokey\Hopeless.cpp (162):
+
+    160:     txSetFillColor (TX_BLUE);
+    161:     for (int i = 1; i < length_; i++) txRectangle (x_[i] - 5 * 0.5 * Zoom, y_[i] - 5 * 0.5 * Zoom, x_[i] + 5 * 0.5 * Zoom, y_[i] + 5 * 0.5 * Zoom);
+=>  162:     txBitBlt (txDC(), x_[0] - 5 * 0.5 * Zoom, y_[0] - 5 * 0.5 * Zoom, 0, 0, photo_);
+    163:     txDeleteDC (photo_);
+    164:     }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Program Files\TX\TXLib.h
+Compiled:	Apr 22 2018 12:26:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 22 2018 12:27:02
+
+Run file:	E:\AirHokey\Hopeless.exe
+Directory:	E:\AirHokey
+
+--------------------------------------------------
